@@ -68,10 +68,16 @@
 
         <br />
 
-        <div class="form-group" style="margin-top: -10px">
+        <!-- <div class="form-group" style="margin-top: -10px">
           <label class="col-form-label" style="width: 30%; text-align: left;">Department :</label>
           <input type="text" class="box" [(ngModel)]="student.studentDept" name="department" style="width: 50%;" />
           <br style="line-height: 35px">
+        </div> -->
+        <div class="form-group" style="margin-top: -10px">
+          <label class="col-form-label" style="width: 150%;  text-align: left;">Department:</label>
+        <select class="box" [(ngModel)]="student.studentDept" name="Department">
+          <option *ngFor="let dept of depts" value="{{dept}}">{{dept}}</option>
+          </select> 
         </div>
 
         <br/>
