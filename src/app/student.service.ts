@@ -53,7 +53,7 @@ export class StudentService {
   }
   updateStudent(id: number,student: Student){
     console.log("ser");
-    return this.http.put(this.studentSvcUrl + "/" + id, JSON.stringify(student),
+    return this.http.patch(this.studentSvcUrl + "/" + id, JSON.stringify(student),
     this.httpOptions).pipe(
       catchError(this.handleError)
     );
