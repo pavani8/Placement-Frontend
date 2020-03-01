@@ -1,0 +1,370 @@
+Angular
+-------
+v1.0 : 2010 (AngularJS) --> JavaScript
+v2.0 : 2016 (Angular) --> TypeScript (superset of JavaScript)
+v4.0 : 2017 
+v6.0 : 2018
+
+Installing Angular
+------------------
+1) npm install -g @angular/cli@6.0
+2) ng -v : To check the Angular version
+3) Create a folder for Angular training and navigate to that folder.
+	CD C:\WinWire-MSNET-Training\Web\Angular
+4) Create a new Angular project (example: AngularProj01).
+	ng new AngularProj01
+5) Switch to the new folder.
+	cd AngularProj01
+6) To start the project:
+	ng serve
+7) To test, open a browser and type: 
+	http://localhost:4200
+
+Angular Project in VS Code
+--------------------------
+1) In VS code, click Open Folder.
+2) Select the Angular project folder and click 'Select Folder' button.
+
+Data Binding
+------------
+1) Right-click on 'src' folder and select 'New Folder'.
+2) Name the folder as 'models'.
+3) Right-click on 'models' folder and select 'New File'.
+4) Name the file as 'Employee.ts'.
+5) Code the class.
+6) Open the 'app.component.ts' file from the 'src/app' folder.
+7) Import the Employee class.
+8) Create an object named 'emp' for the Employee class inside the 'AppComponent' class.
+9) Open the 'app.component.html' file from the 'src/app' folder.
+10) Code the HTML and bind the object data to controls using 'ngModel'.
+11) Open the 'app.module.ts' file from the 'src/app' folder.
+12) Import the 'FormsModule'.
+13) Add the FormsModule in 'imports' section of the @NgModule attribute.
+
+Exercise:
+--------
+* Create a new Angular project to display the details of a product, which include product id, name, category and price.
+
+Creating New Components
+-----------------------
+1) Use the 'generate component' CLI command to create new components.
+	ng generate component hello-world
+2) To load the new component, open app.component.html.
+3) Add the new component tag.
+	<app-hello-world></app-hello-world>
+
+Components with Data
+--------------------
+1) Create a new component.
+	ng generate component user-item
+2) Open user-item.component.ts.
+3) Add properties in UserItemComponent class.
+	name: string;
+4) Initialize the properties in the constructor.
+	constructor() {
+	  this.name = 'Ramesh';
+	}
+5) Open user-item.component.html.
+6) Render the properties.
+	Hello {{ name }}
+7) To load the new component, open app.component.html.
+8) Add the new component tag.
+	<app-user-item></app-user-item>
+
+Working with Arrays
+-------------------
+1) Create a new component.
+	ng generate component user-list
+2) Replace the <app-user-item> tag with <app-user-list> in the app.component.html file.
+3) Add an array property(array of strings) in UserListComponent class 
+(in user-list.component.ts file).
+	names: string[];
+4) Initialize the array with some names.
+constructor() { 
+    this.names = [ "Ramesh", "Suresh", "Devi", "Hari", "Sandhya" ];
+  }
+5) Open the user-list.component.html file.
+6) Use *ngFor attribute to loop through the array.
+	<ul>
+	  <li *ngFor="let name of names">Hello {{ name }}</li>
+	</ul>
+
+Rendering Child Components
+--------------------------
+1) Open the user-list.component.html file.
+2) Replace the code with:
+	<ul>
+	  <li *ngFor="let name of names">
+		<app-user-item></app-user-item>
+	  </li>
+	</ul>
+3) Open the file user-item.component.ts file.
+4) Add 'Input' to the list in import.
+	import { Component, OnInit, Input } from '@angular/core';
+5) In UserItemComponent class, add Input annotation.
+	@Input() name: string;
+6) Remove the code in the constructor.
+7) Open the user-list.component.html file.
+8) Replace the code with:
+	<ul>
+	  <li *ngFor="let nam of names">
+		<app-user-item [name]="nam"></app-user-item>
+	  </li>
+	</ul>
+
+Exercise:
+--------
+* Create an Angular project and add 2 components:
+1) employee which displays the details of a single object of Employee class.
+2) empList which displays an array of Employee objects.
+
+Pipes (Filters)
+-----
+1) lowercase
+2) uppercase
+3) currency
+4) titlecase
+5) date
+6) json
+7) percent
+
+ngIf
+----
+* To display some data conditionally.
+
+ngSwitch
+--------
+* To check for multiple conditions.
+<tag [ngSwitch]="field">
+  <tag *ngSwitchCase="value1">
+    tags
+  </tag>
+  <tag *ngSwitchCase="value2">
+    tags
+  </tag>
+  <tag *ngSwitchCase="value3">
+    tags
+  </tag>
+  ...
+  <tag *ngSwitchDefault>
+    tags
+  </tag>
+</tag>
+
+Example:
+<ul [ngSwitch]="countryCode">
+  <li *ngSwitchCase="US">United States of America</li>
+  <li *ngSwitchCase="IN">India></li>
+  <li *ngSwitchCase="AU">Australia</li>
+  <li *ngSwitchDefault>Unknown country</li>
+</ul>
+
+Angular Services
+----------------
+* In an Angular application, components deal with presenting the data to the view. Fetching data for the components to display is handled by Angular services.
+* From the official documentation:
+"Components shouldn't fetch or save data directly and they certainly shouldn't knowingly present fake data. They should focus on presenting data and delegate data access to a service."
+* Another advantage of using Angular services is that it makes it easier to share data between two separate components. 
+
+Creating a Service
+------------------
+1) Navigate to the project folder.
+2) Use the "generate service" command of ng to create a new service.
+	ng g service myservice
+3) We need to include the service created in the main parent app.module.ts.
+import { MyserviceService } from './myservice.service';
+...
+providers: [MyserviceService],
+4) In the service class, we will create a function. Open the myservice.service.ts file.
+	showTodayDate() {
+    	  let ndate = new Date();
+       	  return ndate;
+   	}
+
+Using the Service
+-----------------
+1) Open the class file of any component.
+2) Import the service.
+	import { MyserviceService } from './myservice.service';
+3) Declare an object for the service.
+	todaydate;
+	constructor(private myservice: MyserviceService) {}
+4) Invoke the method in the service.
+	ngOnInit() {
+      	  this.todaydate = this.myservice.showTodayDate();
+	}
+5) Display the date in the .html file.
+	{{todaydate}}
+
+Exercise:
+--------
+* Create an Angular service called ArithmeticService with the following methods:
+1) Add
+2) Subtract
+3) Multiply
+4) Divide
+All the methods take 2 numbers as input and return a number.
+Create a component which accepts the 2 numbers in text boxes, and an operator in a combobox.
+On clicking the Calculate button, the result should be displayed.
+
+* Create an Angular project with Product class. Create a service to perform CRUD operations on an array of products.
+1) addProduct(prod: Product)
+2) getAllProducts(): Product[]
+3) getProductById(pid: number): Product
+4) updateProduct(pid: number, newprod: Product)
+5) deleteProduct(pid: number)
+* Create a component to use the above service.
+
+* Create 2 model classes:
+1) SBAccount contains accountNumber, customerName, customerAddress and currentBalance.
+2) SBTransaction contains transactionId, transactionDate, accountNumber, amount and transactionType ('D' for deposit, 'W' for withdrawal).
+* Create a service called BankService which contains two arrays one for each class.
+* The service should contain the following operations:
+1) addAccount(acc: SBAccount)
+2) depositAmount(accno: string, amt: number)
+3) withdrawAmount(accno: string, amt: number)
+4) getAllAccounts(): SBAccount[]
+5) getAccountByNo(accno: string): SBAccount
+6) getTransactions(accno: string): SBTransaction[]
+* Create 2 components:
+1) account: This component calls these methods: addAccount, getAllAccounts, getAccountByNo.
+2) transaction: This component calls these methods: depositAmount, withdrawAmount, getTransactions.
+
+HTTP Service
+------------
+* Http Service will help us fetch external data, post to it, etc.
+* We need to import the http module to make use of the http service.
+1) Install rxjs package.
+	npm install -g rxjs@6 rxjs-compat@6 --save
+2) Open the app.module.ts file.
+	import { HttpModule } from '@angular/http';
+	...
+  	imports: [
+      		...,
+      		HttpModule
+   	],
+3) Use the Http service in the component's class.
+	import { Http } from '@angular/http';
+	import { map } from 'rxjs/Operators';  
+	...
+	constructor(private http: Http) { }
+        ngOnInit() {
+	      this.http.get("http://jsonplaceholder.typicode.com/users").
+	      pipe(map((response: any) => response.json())).
+	      subscribe(result => { console.log(result);});
+	}
+4) Two operations are performed on the fetched url data: map and subscribe. The Map method helps to convert the data to json format. Once the map is done, the subscribe will log the output in the console.
+
+Display Data in Browser
+-----------------------
+1) Open the component class file.
+   httpdata;
+   ngOnInit() {
+      this.http.get("http://jsonplaceholder.typicode.com/users").
+      map(
+         (response) => response.json()
+      ).
+      subscribe(
+         (data) => {this.displaydata(data);}
+      )
+   }
+   displaydata(data) {this.httpdata = data;}
+2) Open the component html file.
+<ul *ngFor = "let data of httpdata">
+   <li>Name : {{data.name}} Address: {{data.address.city}}</li>
+</ul>
+3) To filter the data, open the component class file.
+export class AppComponent {
+   title = 'app';
+   searchparam = 2;
+   jsondata;
+   name;
+   constructor(private http: Http) { }
+   ngOnInit() {
+      this.http.get("http://jsonplaceholder.typicode.com/users?id="+this.searchparam).
+      map(
+         (response) => response.json()
+      ).
+      subscribe((data) => this.converttoarray(data))
+   }
+   converttoarray(data) {
+      console.log(data);
+      this.name = data[0].name;
+   }
+}
+4) Open the component html file.
+	{{name}}
+
+HTTP Methods
+------------
+url = "http://jsonplaceholder.typicode.com/users"
+
+Method		URL			Request Body	Response Body
+---------------------------------------------------------------------
+1) GET  	url			-		All objects
+2) GET		url/3			-		One object
+		url?id=3		-		One object
+		url?username=Bret	-		One or more objects
+                url?address.city=Roscoeview		One or more objects
+		url?address.city=Roscoeview&address.zipcode=33263
+3) POST		url			Object		-
+4) PUT		url/id			Object		-
+5) DELETE	url/id			-		-
+
+Routing
+-------
+* We access our application through one URL such as http://localhost:4200 and our application is not aware of any other URLs such as http://localhost:4200/todos.
+* Most web applications need to support different URLs to navigate users to different pages in the application. That’s where a router comes in.
+* Angular router is a JavaScript router implementation that’s designed to work with Angular and is packaged as @angular/router.
+
+1) Create a file called app.routing.ts inside the src/app folder.
+2) Import the RouterModule and Routes from @angular/router.
+	import { RouterModule, Routes } from '@angular/router';
+3) You'll also need the ModuleWithProviders module for implementing routing.
+	import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
+4) Create and export a variable called AppRoutes in the app.routing.ts, which would be a collection of all routes inside the Angular application.
+	export const AppRoutes: Routes = [];
+5) Add a route inside the AppRoutes list to show our Component. 
+	{ path: 'xxx', component: xxxComponent }
+6) Create the routing module using RouterModule.forRoot inside the app.routing.ts file.
+	export const ROUTING: ModuleWithProviders = RouterModule.forRoot(AppRoutes);
+7) Import the ROUTING constant inside the app.module.ts file.
+	import { ROUTING } from './app.routing';
+8) Add the ROUTING to the imports section.
+	imports: [
+	  BrowserModule,
+	  FormsModule,
+	  ROUTING
+	],
+9) Save the above changes and restart the Angular application using ng serve.
+10) Point your browser to http://localhost:4200/xxx and you will have the xxxComponent displayed.
+
+Implementing Navigation
+-----------------------
+1) Create a new component called Home.
+2) Open the home.component.html file.
+3) Add the following code to it:
+	<h2>
+    		Welcome to Home Page
+	</h2>
+	<nav>
+      		<a routerLink="/xxx" routerLinkActive="active">Go to xxx</a>
+	</nav>
+4) Import the component in app.module.ts file.
+	import { HomeComponent } from './home/home.component';
+5) Add the HomeComponent to the NgModule in the app.module.ts file.
+	@NgModule({
+  		declarations: [
+    		AppComponent,
+    		CalcComponent,
+    		HomeComponent
+  	], ...
+6) Add the following code to the app.component.html file:
+	<router-outlet></router-outlet>
+7) Import the component in app.routing.ts.
+	import { HomeComponent } from './home/home.component';
+8) Inside the app.routing.ts file, include the default route to display as the HomeComponent.
+	{ path: '', component: HomeComponent }
+9) To handle undefined routing requests, add the following:
+	{ path: '**', component: NotFoundComponent }
+10) Create the NotFound component.
