@@ -46,7 +46,6 @@ export class StudentService {
     })
   };
   addStudent(student: Student){
-    console.log("hello");
     return this.http.post(this.studentSvcUrl, JSON.stringify(student), this.httpOptions).pipe(
       catchError(this.handleError)
     );

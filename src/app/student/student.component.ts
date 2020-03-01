@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../student.service';
+import { DepartmentService } from '../department.service';
+import { Department } from '../models/department';
 import { Student } from '../models/student';
 
 @Component({
@@ -10,15 +12,28 @@ import { Student } from '../models/student';
 export class StudentComponent implements OnInit {
   student: Student;
   students: Student[];
+  dept: Department;
+  depts: Department[];
   error: string;
 
-  constructor(private studentSvc: StudentService) {
+  constructor(private studentSvc: StudentService, private deptSvc: DepartmentService) {
     this.students = [];
     this.student = new Student(0,"","",0,"",new Date(),"","");
+    this.depts = [];
+    this.dept = new Department("");
    }
 
   ngOnInit() {
     this.getAllStudents();
+    this.deptSvc.getAllDepartments().
+    subscribe(
+      (data: any[]) => {
+        console.log(data);
+        for(var i=0;i<data.length;i++){
+          this.depts.push(data[i].departmentName);
+      }
+    }
+    );
   }
   getAllStudents(){
     this.studentSvc.getAllStudents().
