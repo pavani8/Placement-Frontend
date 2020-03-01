@@ -1,0 +1,139 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <a class="navbar-band" href="#">
+    </a>
+    <label style="color:rgb(241, 236, 236); font-size: 40px; text-align: center; width: 100%">BVRITN Placement Portal</label>
+  </nav>
+  <!--<a routerLink="/Home" routerLinkActive="active">Back to Home Page </a><br />-->
+  <!-- <a href="http://localhost:4200/Admin">Back to Home</a> -->
+  <div class="row"
+    style="margin-top: 20px;  text-align: center ; position: relative; ">
+    <div class="column" style="background-color: white; width: 50%">
+  
+      <div class="inner">
+        <form id="jobForm">
+          <h2>Job Form </h2>
+  
+          <div class="form-group" style="margin-top: 10px;">
+            <label class="col-form-label" style="width: 30%; text-align: left;">Job Id:</label>
+            <input type="text" class="box" [(ngModel)]="job.jobId" name="jobId" style="width: 36%;" required minlength="6" required maxlength="6" #id="ngModel" required  /> 
+           <!-- <div style="color: red"  *ngIf="id.errors?.minlength" >
+               Employee Id must be 6 characters long.
+            </div>-->
+           &nbsp;&nbsp;
+            <input type="button" class="btn btn-info btn-sm" value="Search" (click)="getJobById()" style="width: 10%;" />
+          </div>
+  
+          <br/>
+  
+          <div class="form-group" style="margin-top: -10px">
+            <label class="col-form-label" style="width: 30%;  text-align: left;">Job Profile:</label>
+            <input type="text" class="box" [(ngModel)]="job.jobProfile"  style="width: 50%;" name="jobProfile" required #name="ngModel" required />
+            <div style="color: red" *ngIf="name.invalid && (name.dirty || name.touched)" >Job Profile is  required</div> 
+          </div>
+  
+          <br/>
+  
+          <div class="form-group" style="margin-top: -10px">
+            <label class="col-form-label" style="width: 30%;  text-align: left;">Job Skills:</label>
+            <input type="text" class="box" [(ngModel)]="job.jobSkills"  style="width: 50%;" name="jobSkills" required #name="ngModel" required />
+            <div style="color: red" *ngIf="name.invalid && (name.dirty || name.touched)" >Job Skills is  required</div> 
+          </div>
+  
+          <br/>
+  
+          <div class="form-group" style="margin-top: -10px">
+            <label class="col-form-label" style="width: 30%; text-align: left;">Job Description:</label>
+            <input type="text" class="box" [(ngModel)]="job.jobDescription"  style="width: 50%;" name="jobDescription" required #name="ngModel" required  />
+            <div style="color: red" *ngIf="name.invalid && (name.dirty || name.touched)" >Job Skills is  required</div> 
+        </div>
+  
+        <br/>
+  
+        <div class="form-group" style="margin-top: -10px">
+          <label class="col-form-label" style="width: 30%; text-align: left;">Job Eligibility :</label>
+          <input type="text" class="box" [(ngModel)]="job.jobEligibility"  style="width: 50%;" name="jobEligibility" required #name="ngModel" required  />
+          <div style="color: red" *ngIf="name.invalid && (name.dirty || name.touched)" >Job Eligibility is  required</div>
+        </div>
+  
+        <br/>
+         
+          <div class="form-group" style="margin-top: -10px">
+            <label class="col-form-label" style="width: 30%; text-align: left;">Job Package :</label>
+            <input type="text" class="box" [(ngModel)]="job.jobPackage" name="jobPackage" style="width: 50%;" />
+          </div>
+  
+          <br />
+  
+          <div class="form-group" style="margin-top: -10px">
+            <label class="col-form-label" style="width: 30%; text-align: left;">Job Location :</label>
+            <input type="text" class="box" [(ngModel)]="job.jobLocation" name="jobLocation" style="width: 50%;" />
+            <br style="line-height: 35px">
+          </div>
+  
+          <br/>
+  
+          <div class="form-group" style="margin-top: -10px">
+              <label class="col-form-label" style="width: 30%; text-align: left;">Job Date: </label>
+              <input type="datetime-local" class="box" [(ngModel)]="job.jobDate" name="jobDate" style="width: 50%;" />
+          </div>
+          <br/>
+          <div class="form-group" style="margin-top: -10px">
+              <label class="col-form-label" style="width: 30%; text-align: left;">Job Department :</label>
+              <input type="text" class="box" [(ngModel)]="job.jobDept" name="jobDept" style="width: 50%;" />
+              <br style="line-height: 35px">
+          </div>
+          <br/>
+          <div class="form-group" style="margin-top: -10px">
+              <label class="col-form-label" style="width: 30%; text-align: left;">Job Type :</label>
+              <input type="text" class="box" [(ngModel)]="job.jobType" name="jobType" style="width: 50%;" />
+              <br style="line-height: 35px">
+          </div>
+          <br/>
+          <input type="button" class="btn btn-info col-sm-3 " style="margin-right: 16px" value="Save" (click)="addJob()" /> &nbsp;&nbsp;
+          <input type="button" class="btn btn-info col-sm-3" style="margin-right: 16px" value="Update" (click)="updateJob()" />
+          &nbsp;&nbsp;
+          <input type="button" class="btn btn-info col-sm-3" value="Delete" (click)="deleteJob()" />
+        </form>
+      </div>
+    </div>
+  
+    <div class="column" style="width: 50%; padding-right: 30px; background-color:white">
+      <div class="form-group">
+        <h2>Job Details</h2>
+         <table id="example" class="table table-responsive table-striped table-bordered" style="width:100%">
+          <thead>
+            <tr>
+              <th>JobId</th>
+              <th>Job Profile</th>
+              <th>Job Skills</th>
+              <th>Job Description</th>
+              <th>Job Eligibility</th>
+              <th>Job Package</th>
+              <th>Job Location</th>
+              <th>Job Date</th>
+              <th>Job Department</th>
+              <th>Job Type</th>
+            </tr>
+          </thead>
+          <tbody>
+                  
+            <tr *ngFor="let j of jobs">
+              <td>{{j.jobId}}</td>
+              <td>{{j.jobProfile}}</td>
+              <td>{{j.jobSkills}}</td>
+              <td>{{j.jobDescription}}</td>
+              <td>{{j.jobEligibility}}</td>
+              <td>{{j.jobPackage}}</td>
+              <td>{{j.jobLocation}}</td>
+              <td>{{j.jobDate}}</td>
+              <td>{{j.jobDept}}</td>
+              <td>{{j.jobType}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="color:red;">{{ error }}</div>
+     
+    </div>
+  </div>
+  
