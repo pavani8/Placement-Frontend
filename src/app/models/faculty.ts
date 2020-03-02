@@ -4,20 +4,20 @@ export class Faculty{
     facultyEmail: string;
     facultyContact: number;
     facultyGender: string;
+    facultyDesignation: string;
     facultyExperience: number;
     facultyDept: string;
-    facultyAddress: string;
 
-    constructor(fId: number,fName: string,fEmail: string,fContact: number,fGender: string,fExperience: number,fDept: string,fAddress: string)
+    constructor(fId: number,fName: string,fEmail: string,fContact: number,fGender: string,fDesignation: string,fExperience: number,fDept: string)
     {
         this.facultyId = fId;
         this.facultyName = fName;
         this.facultyEmail = fEmail;
         this.facultyContact = fContact;
         this.facultyGender = fGender;
+        this.facultyDesignation = fDesignation;
         this.facultyExperience = fExperience;
         this.facultyDept = fDept;
-        this.facultyAddress = fAddress;
 
     }
 }

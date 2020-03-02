@@ -13,7 +13,7 @@
       <form id="studentForm">
         <h2>Student Form </h2>
 
-        <div class="form-group" style="margin-top: 10px;">
+        <div class="form-group" style="margin-top: -10px;">
           <label class="col-form-label" style="width: 30%; text-align: left;">Student Id:</label>
           <input type="text" class="box" [(ngModel)]="student.studentId" name="studentId" style="width: 36%;" required minlength="6" required maxlength="6" #id="ngModel" required  /> 
          <!-- <div style="color: red"  *ngIf="id.errors?.minlength" >
@@ -63,7 +63,7 @@
        
         <div class="form-group" style="margin-top: -10px">
           <label class="col-form-label" style="width: 30%; text-align: left;">Date Of Birth:</label>
-          <input type="datetime-local" class="box" [(ngModel)]="student.studentDob" name="doBirth" style="width: 50%;" />
+          <input type="datetime-local" class="box" [(ngModel)]="student.studentDob" name="doBirth" #mname="ngModel" style="width: 50%;" />
         </div>
 
         <br />
@@ -75,7 +75,7 @@
         </div> -->
         <div class="form-group" style="margin-top: -10px">
           <label class="col-form-label" style="width: 150%;  text-align: left;">Department:</label>
-        <select class="box" [(ngModel)]="student.studentDept" name="Department">
+        <select [(ngModel)]="student.studentDept"  class="box"  name="Department" style="width: 50%;">
           <option *ngFor="let dept of depts" value="{{dept}}">{{dept}}</option>
           </select> 
         </div>
@@ -83,10 +83,60 @@
         <br/>
 
         <div class="form-group" style="margin-top: -10px">
-          <label class="col-form-label" style="width: 30%; text-align: left;">Address :</label>
-          <input type="text" class="box" [(ngModel)]="student.studentAddress" name="address" style="width: 50%;" />
+          <label class="col-form-label" style="width: 30%; text-align: left;">Temporary Address :</label>
+          <input type="text" class="box" [(ngModel)]="student.studentTempAddress" name="tempaddress" style="width: 50%;" />
           <br style="line-height: 35px">
         </div>
+
+        <br/>
+
+        <div class="form-group" style="margin-top: -10px">
+          <label class="col-form-label" style="width: 30%; text-align: left;">Permanent Address :</label>
+          <input type="text" class="box" [(ngModel)]="student.studentPermanentAddress" name="permaddress" style="width: 50%;" />
+          <br style="line-height: 35px">
+        </div>
+
+        <br/>
+
+        <div class="form-group" style="margin-top: -10px">
+          <label class="col-form-label" style="width: 30%; text-align: left;">Batch :</label>
+          <input type="text"  class="box" [(ngModel)]="student.studentBatch" name="batch" style="width: 50%;" />
+          <br style="line-height: 35px">
+        </div>
+
+        <br/>
+
+        <div class="form-group" style="margin-top: -10px">
+          <label class="col-form-label" style="width: 30%; text-align: left;">SSC Marks:</label>
+          <input type="text"  class="box" [(ngModel)]="student.studentSSCMarks" name="ssc" style="width: 50%;" />
+          <br style="line-height: 35px">
+        </div>
+
+        <br/>
+
+        <div class="form-group" style="margin-top: -10px">
+          <label class="col-form-label" style="width: 30%; text-align: left;">Inter Marks:</label>
+          <input type="text"  class="box" [(ngModel)]="student.studentInterMarks" name="inter" style="width: 50%;" />
+          <br style="line-height: 35px">
+        </div>
+
+        <br/>
+        
+        <div class="form-group" style="margin-top: -10px">
+          <label class="col-form-label" style="width: 30%; text-align: left;">Diploma Marks:</label>
+          <input type="text"  class="box" [(ngModel)]="student.studentDiplomaMarks" name="diploma" style="width: 50%;" />
+          <br style="line-height: 35px">
+        </div>
+
+        <br/>
+
+        <div class="form-group" style="margin-top: -10px">
+          <label class="col-form-label" style="width: 30%; text-align: left;">BTech Marks:</label>
+          <input type="text"  class="box" [(ngModel)]="student.studentBTechMarks" name="btech" style="width: 50%;" />
+          <br style="line-height: 35px">
+        </div>
+
+        <br/>
 
         <input type="button" class="btn btn-info col-sm-3 " style="margin-right: 16px" value="Save" (click)="addStudent()" /> &nbsp;&nbsp;
         <input type="button" class="btn btn-info col-sm-3" style="margin-right: 16px" value="Update" (click)="updateStudent()" />
@@ -111,7 +161,13 @@
             <th>Gender</th>
             <th>DOB</th>
             <th>Department</th>
-            <th>Address</th>
+            <th>Temp.Address</th>
+            <th>Perm.Address</th>
+            <th>Batch</th>
+            <th>SSC Marks</th>
+            <th>Inter Marks</th>
+            <th>Diploma Marks</th>
+            <th>BTech Marks</th>
           </tr>
         </thead>
         <tbody>
@@ -124,7 +180,13 @@
             <td>{{s.studentGender}}</td>
             <td>{{s.studentDob}}</td>
             <td>{{s.studentDept}}</td>
-            <td>{{s.studentAddress}}</td>
+            <td>{{s.studentTempAddress}}</td>
+            <td>{{s.studentPermanentAddress}}</td>
+            <td>{{s.studentBatch}}</td>
+            <td>{{s.studentSSCMarks}}</td>
+            <td>{{s.studentInterMarks}}</td>
+            <td>{{s.studentDiplomaMarks}}</td>
+            <td>{{s.studentBTechMarks}}</td>
           </tr>
         </tbody>
       </table>

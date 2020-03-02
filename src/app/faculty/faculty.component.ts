@@ -13,7 +13,7 @@ export class FacultyComponent implements OnInit {
   
    constructor(private facultySvc: FacultyService) {
      this.faculties = [];
-     this.faculty = new Faculty(0,"","",0,"",0,"","");
+     this.faculty = new Faculty(0,"","",0,"","",0,"");
    }
 
   ngOnInit() {

@@ -6,8 +6,16 @@ export class Student{
     studentGender: string;
     studentDob: Date;
     studentDept: string;
-    studentAddress: string;
-    constructor(studId: number,studName: string,studEmail: string,studContact: number,studGender: string,studDob: Date,studDept: string,studAddress: string){
+    studentTempAddress: string;
+    studentPermanentAddress: string;
+    studentBatch: number;
+    studentSSCMarks: number;
+    studentInterMarks: number;
+    studentDiplomaMarks: number;
+    studentBTechMarks: number;
+
+    constructor(studId: number,studName: string,studEmail: string,studContact: number,studGender: string,studDob: Date,studDept: string,
+        studTempAddress: string, studPermAddress: string, studBatch: number, studSSCMarks: number, studInterMarks: number, studDiplomaMarks: number, studBTechMarks: number){
         this.studentId = studId;
         this.studentName = studName;
         this.studentEmail = studEmail;
@@ -15,7 +23,13 @@ export class Student{
         this.studentGender = studGender;
         this.studentDob = studDob;
         this.studentDept = studDept;
-        this.studentAddress = studAddress;
+        this.studentTempAddress = studTempAddress;
+        this.studentPermanentAddress = studPermAddress;
+        this.studentBatch = studBatch;
+        this.studentSSCMarks = studSSCMarks;
+        this.studentInterMarks = studInterMarks;
+        this.studentDiplomaMarks = studDiplomaMarks;
+        this.studentBTechMarks = studBTechMarks;
     }
 
 }
