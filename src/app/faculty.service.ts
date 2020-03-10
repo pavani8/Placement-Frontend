@@ -39,7 +39,7 @@ export class FacultyService {
     );
   }
 
-  getFacultyById(id: number){
+  getFacultyById(id: string){
     return this.http.get(this.facultySvcUrl + "/" +  id).pipe(
       catchError(this.handleError)
     );
@@ -54,14 +54,14 @@ export class FacultyService {
       pipe(catchError(this.handleError));
   }
 
-  updateFaculty(id: number,faculty: Faculty){
+  updateFaculty(id: string,faculty: Faculty){
     console.log("ser");
     return this.http.patch(this.facultySvcUrl + "/" + id, JSON.stringify(faculty),
     this.httpOptions).pipe(
       catchError(this.handleError)
     );
   }
-  deleteFaculty(id: number) {
+  deleteFaculty(id: string) {
     return this.http.delete(this.facultySvcUrl + "/" + id).
       pipe(catchError(this.handleError));
 

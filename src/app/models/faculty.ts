@@ -1,5 +1,5 @@
 export class Faculty{
-    facultyId: number;
+    facultyId: string;
     facultyName: string;
     facultyEmail: string;
     facultyContact: number;
@@ -7,8 +7,9 @@ export class Faculty{
     facultyDesignation: string;
     facultyExperience: number;
     facultyDept: string;
+    facultyQualification: string
 
-    constructor(fId: number,fName: string,fEmail: string,fContact: number,fGender: string,fDesignation: string,fExperience: number,fDept: string)
+    constructor(fId: string,fName: string,fEmail: string,fContact: number,fGender: string,fDesignation: string,fExperience: number,fDept: string,fQualification: string)
     {
         this.facultyId = fId;
         this.facultyName = fName;
@@ -18,6 +19,7 @@ export class Faculty{
         this.facultyDesignation = fDesignation;
         this.facultyExperience = fExperience;
         this.facultyDept = fDept;
+        this.facultyQualification = fQualification;
 
     }
 }

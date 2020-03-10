@@ -1,0 +1,94 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <a class="navbar-band" href="#">
+  </a>
+  <label style="color:rgb(241, 236, 236); font-size: 40px; text-align: center; width: 100%">BVRITN Placement Portal</label>
+</nav>
+<!--<a routerLink="/Home" routerLinkActive="active">Back to Home Page </a><br />-->
+<!-- <a href="http://localhost:4200/Admin">Back to Home</a> -->
+<div class="row"
+  style="margin-top: 20px;  text-align: center ; position: relative; ">
+  <div class="column" style="background-color: white; width: 50%">
+
+    <div class="inner">
+      <form id="companyForm">
+        <h2>Company Form </h2>
+
+        <div class="form-group" style="margin-top: -10px;">
+          <label class="col-form-label" style="width: 30%; text-align: left;">Company Id:</label>
+          <input type="text" class="box" [(ngModel)]="company.companyId" name="companyId" style="width: 36%;"  required minlength="6" required maxlength="6" #id="ngModel" required  /> 
+         &nbsp;&nbsp;
+          <input type="button" class="btn btn-info btn-sm" value="Search" (click)="getCompanyById()" style="width: 10%;" />
+        </div>
+
+        <br/>
+
+        <div class="form-group" style="margin-top: -10px">
+          <label class="col-form-label" style="width: 30%;  text-align: left;">Company Name:</label>
+          <input type="text" class="box" [(ngModel)]="company.companyName"  style="width: 50%;" name="companyName" required #name="ngModel" required />
+          <div style="color: red" *ngIf="name.invalid && (name.dirty || name.touched)" >Company Name is  required</div> 
+        </div>
+
+        <br/>
+
+        <div class="form-group" style="margin-top: -10px">
+          <label class="col-form-label" style="width: 30%;  text-align: left;">Company Description:</label>
+          <input type="text" class="box" [(ngModel)]="company.companyDescription"  style="width: 50%;" name="companyDescription" required #name="ngModel" required />
+        </div>
+
+        <br/>
+       
+        <div class="form-group" style="margin-top: -10px">
+          <label class="col-form-label" style="width: 30%; text-align: left;">Company Selection Process  :</label>
+        <input type="text" class="box" [(ngModel)]="company.companySelectionProcess" name="SelectionProcess" style="width: 50%;" />
+          <br style="line-height: 35px">
+        </div>
+
+        <br/>
+
+        <div class="form-group" style="margin-top: -10px">
+          <label class="col-form-label" style="width: 30%; text-align: left;">Company Recruited:</label>
+          <input type="text"  class="box" [(ngModel)]="company.companyRecruited" name="Recruited" style="width: 50%;" />
+          <br style="line-height: 35px">
+        </div>
+
+        <br/>
+
+        <input type="button" class="btn btn-info col-sm-3 " style="margin-right: 16px" value="Save" (click)="addCompany()" /> &nbsp;&nbsp;
+        <input type="button" class="btn btn-info col-sm-3" style="margin-right: 16px" value="Update" (click)="updateCompany()" />
+        &nbsp;&nbsp;
+        <input type="button" class="btn btn-info col-sm-3" value="Delete" (click)="deleteCompany()" />&nbsp;&nbsp;
+        <br/><br/><br/>
+        <button type="reset" class="btn btn-info col-sm-3" value="Reset">Reset</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="column" style="width: 50%; padding-right: 30px; background-color:white">
+    <div class="form-group">
+     <h2>Company Details</h2>
+      <table id="example" class="table table-responsive table-striped table-bordered" style="width:50%">
+        <thead>
+          <tr>
+            <th>CompanyId</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>SelectionProcess</th>
+            <th>No.of Students Recruited</th>
+          </tr>
+        </thead>
+        <tbody>
+         
+          <tr *ngFor="let c of companies">
+            <td>{{c.companyId}}</td>
+            <td>{{c.companyName}}</td>
+            <td>{{c.companyDescription}}</td>
+            <td>{{c.companySelectionProcess}}</td>
+            <td>{{c.companyRecruited}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="color:red;">{{ error }}</div>
+   
+  </div>
+</div>

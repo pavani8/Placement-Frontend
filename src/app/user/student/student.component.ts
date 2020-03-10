@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentService } from '../student.service';
-import { DepartmentService } from '../department.service';
-import { Department } from '../models/department';
-import { Student } from '../models/student';
+import { StudentService } from '../../student.service';
+import { DepartmentService } from '../../department.service';
+import { Department } from '../../models/department';
+import { Student } from '../../models/student';
 
 @Component({
   selector: 'app-student',
@@ -18,7 +18,7 @@ export class StudentComponent implements OnInit {
 
   constructor(private studentSvc: StudentService, private deptSvc: DepartmentService) {
     this.students = [];
-    this.student = new Student(0,"","",0,"",new Date(),"","","",0,0,0,0,0);
+    this.student = new Student("","","",0,"",new Date(),"","","",0,0,0,0,0);
     this.depts = [];
     this.dept = new Department("");
    }
@@ -46,7 +46,7 @@ export class StudentComponent implements OnInit {
     );
   }
   getStudentById(){
-    let id: number = this.student.studentId;
+    let id: string = this.student.studentId;
     this.studentSvc.getStudentById(id).
     subscribe(
       (data: any) => {
@@ -68,8 +68,7 @@ export class StudentComponent implements OnInit {
     );
   }
   updateStudent(){
-    console.log("com");
-    let id: number = this.student.studentId;
+    let id: string = this.student.studentId;
     this.studentSvc.updateStudent(id, this.student).
     subscribe(
       (data: any) => {
@@ -81,7 +80,7 @@ export class StudentComponent implements OnInit {
     );
   }
   deleteStudent(){
-    let id: number = this.student.studentId;
+    let id: string = this.student.studentId;
     this.studentSvc.deleteStudent(id).
     subscribe(
       (data: any) => {

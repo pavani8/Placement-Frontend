@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FacultyService } from '../faculty.service';
-import { Faculty } from '../models/faculty';
+import { FacultyService } from '../../faculty.service';
+import { Faculty } from '../../models/faculty';
 @Component({
   selector: 'app-faculty',
   templateUrl: './faculty.component.html',
@@ -13,7 +13,7 @@ export class FacultyComponent implements OnInit {
   
    constructor(private facultySvc: FacultyService) {
      this.faculties = [];
-     this.faculty = new Faculty(0,"","",0,"","",0,"");
+     this.faculty = new Faculty("","","",0,"","",0,"","");
    }
 
   ngOnInit() {
@@ -31,7 +31,7 @@ export class FacultyComponent implements OnInit {
     );
   }
   getFacultyById(){
-    let id: number = this.faculty.facultyId;
+    let id: string = this.faculty.facultyId;
     this.facultySvc.getFacultyById(id).
     subscribe(
       (data: any) => {
@@ -55,7 +55,7 @@ export class FacultyComponent implements OnInit {
   }
 
   updateFaculty() {
-    let id: number = this.faculty.facultyId;
+    let id: string = this.faculty.facultyId;
     this.facultySvc.updateFaculty(id,this.faculty).
     subscribe(
       (data: any) => {
@@ -68,7 +68,7 @@ export class FacultyComponent implements OnInit {
   }
   
   deleteFaculty() {
-    let id: number = this.faculty.facultyId;
+    let id: string = this.faculty.facultyId;
     this.facultySvc.deleteFaculty(id).
     subscribe(
       (data: any) => {

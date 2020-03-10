@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { Student } from './models/student';
+import { Company } from './models/company';
 import { observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StudentService {
-  studentSvcUrl: string;
+export class CompanyService {
+  companySvcUrl: string;
   constructor(private http: HttpClient){
-    this.studentSvcUrl = "http://localhost:8000/student";
+    this.companySvcUrl = "http://localhost:8000/company";
   }
   private handleError(error: HttpErrorResponse){
     // if(error.error instanceof ErrorEvent){
@@ -30,14 +30,13 @@ export class StudentService {
       error.error.message);
 
   };
-  getAllStudents(){
-    return this.http.get(this.studentSvcUrl + "/all" ).pipe(
+  getAllCompanies(){
+    return this.http.get(this.companySvcUrl + "/all" ).pipe(
       catchError(this.handleError)
     );
   }
-  getStudentById(id: string){
-    console.log("hi");
-    return this.http.get(this.studentSvcUrl + "/" +  id).pipe(
+  getCompanyById(id: number){
+    return this.http.get(this.companySvcUrl + "/" +  id).pipe(
       catchError(this.handleError)
     );
   }
@@ -46,19 +45,19 @@ export class StudentService {
       'Content-Type': 'application/json'
     })
   };
-  addStudent(student: Student){
-    return this.http.post(this.studentSvcUrl, JSON.stringify(student), this.httpOptions).pipe(
+  addCompany(company: Company){
+    return this.http.post(this.companySvcUrl, JSON.stringify(company), this.httpOptions).pipe(
       catchError(this.handleError)
     );
   }
-  updateStudent(id: string,student: Student){
-    return this.http.patch(this.studentSvcUrl + "/" + id, JSON.stringify(student),
+  updateCompany(id: number,company: Company){
+    return this.http.patch(this.companySvcUrl + "/" + id, JSON.stringify(company),
     this.httpOptions).pipe(
       catchError(this.handleError)
     );
   }
-  deleteStudent(id: string){
-    return this.http.delete(this.studentSvcUrl + "/" + id).pipe(
+  deleteCompany(id: number){
+    return this.http.delete(this.companySvcUrl + "/" + id).pipe(
       catchError(this.handleError)
     );
   }

@@ -1,5 +1,5 @@
 export class Student{
-    studentId: number;
+    studentId: string;
     studentName: string;
     studentEmail: string;
     studentContact: number;
@@ -14,7 +14,7 @@ export class Student{
     studentDiplomaMarks: number;
     studentBTechMarks: number;
 
-    constructor(studId: number,studName: string,studEmail: string,studContact: number,studGender: string,studDob: Date,studDept: string,
+    constructor(studId: string,studName: string,studEmail: string,studContact: number,studGender: string,studDob: Date,studDept: string,
         studTempAddress: string, studPermAddress: string, studBatch: number, studSSCMarks: number, studInterMarks: number, studDiplomaMarks: number, studBTechMarks: number){
         this.studentId = studId;
         this.studentName = studName;
