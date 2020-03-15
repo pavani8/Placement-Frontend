@@ -38,7 +38,7 @@ export class LoginComponent {
               if (this.studentLogin.studentPassword == this.password) {
                 let redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/user';
                 this.router.navigateByUrl(redirect);
-                //this.router.navigate(['user']);
+
               }
               else {
                 alert("Invalid Credentials");

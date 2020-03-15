@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+//import { HttpModule } from '@angular/http';
 //import { FacultyComponent } from './admin/faculty/faculty.component';
 import { JobComponent } from './job/job.component';
 import { CompanyComponent } from './company/company.component';
@@ -16,13 +17,15 @@ import { AuthService } from './auth/auth.service';
 import { FacultyService } from './faculty.service';
 import { JobService } from './job.service';
 import { CompanyService } from './company.service';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JobComponent,
     CompanyComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import { CompanyService } from './company.service';
     AuthModule,
     AdminModule,
     UserModule,
+    //ReactiveFormsModule,
     ROUTING
   ],
   providers: [AuthGuard,AuthService,FacultyService,JobService,CompanyService],

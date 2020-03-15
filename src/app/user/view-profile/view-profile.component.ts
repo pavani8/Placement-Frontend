@@ -19,12 +19,12 @@ student: Student=new Student("","","",0,"",new Date(),"","","",0,0,0,0,0);
 
   ngOnInit() {
     console.log("hello");
-    this.studSvc.getStudentById(this.currentUser).
+   /* this.studSvc.getStudentById(this.currentUser).
     subscribe((data: Student) => {
       this.student = data;
       console.log(data);
       console.log(this.student);
       this.error = "";
-      }, error => this.error = error);
+      }, error => this.error = error);*/
   } 
 }
