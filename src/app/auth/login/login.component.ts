@@ -7,6 +7,7 @@ import { StudentService } from '../../student.service';
 import { Student } from '../../models/student';
 import { facultyLogin } from '../.././models/facultyLogin';
 import { FacultyloginService } from '../../facultylogin.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -15,57 +16,33 @@ import { FacultyloginService } from '../../facultylogin.service';
 })
 export class LoginComponent {
   message: string;
-  @Input() userid: string;
-  student: any;
-  studentLogin: any;
-  facultyLogin: any;
+  @Input() userId: string;
+  loading = false;
+  submitted = false;
+  returnUrl: string;
   @Input() password: string;
   error: string;
-  constructor(public authService: AuthService, public router: Router, public studentSvc: StudentService, public studLoginSvc: StudentloginService, public facultySvc: FacultyloginService) {
+  constructor(public authService: AuthService, public router: Router) {
     this.authService.logout();
   }
   setMessage(){
   this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
  }
-  login(userid: string) {
-    this.authService.login(this.userid).subscribe(() => {
-      this.studLoginSvc.getStudentLoginById(this.userid).
-        subscribe(
-          (data: studentLogin) => {
-            this.studentLogin = data;
-            console.log("userid: ", this.userid);
-            if (this.studentLogin.studentId == this.userid ) {
-              if (this.studentLogin.studentPassword == this.password) {
-                let redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/user';
-                this.router.navigateByUrl(redirect);
-
-              }
-              else {
-                alert("Invalid Credentials");
-              }
-            }
-            else if (this.facultyLogin.facultyId == this.userid) {
-              if (this.facultyLogin.facultypassword == this.password) {
-                let redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/admin';
-                this.router.navigateByUrl(redirect);
-               // this.router.navigate(["admin"]);
-              }
-              else {
-                alert("Invalid Credentials");
-              }
-            }
-
-            else {
-              console.log("Wrong User Details");
-            }
-          },
-          error => this.error = error
-
-        )
-
-
-    });
-  }
+  login() {
+    this.submitted = true;
+        this.loading = true;
+        console.log("comp");
+        this.authService.login(this.userId, this.password)
+            .pipe(first())
+            .subscribe(
+                data => {
+                    this.router.navigate(['/User']);
+                },
+                error => {
+                  this.error = error
+                    this.loading = false;
+                });
+    }
 
   logout() {
     this.authService.logout();

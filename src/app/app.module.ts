@@ -17,7 +17,8 @@ import { AuthService } from './auth/auth.service';
 import { FacultyService } from './faculty.service';
 import { JobService } from './job.service';
 import { CompanyService } from './company.service';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RegisterComponent } from './register/register.component';
     JobComponent,
     CompanyComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

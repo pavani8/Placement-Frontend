@@ -12,7 +12,7 @@ import { catchError, retry } from 'rxjs/operators';
 export class StudentloginService {
 studentLoginSvcUrl: string;
   constructor(private http: HttpClient) {
-    this.studentLoginSvcUrl = "http://localhost:8000/studentlogin";
+    this.studentLoginSvcUrl = "http://localhost:8000/userregistration";
    }
    private handleError(error: HttpErrorResponse){
     return throwError(

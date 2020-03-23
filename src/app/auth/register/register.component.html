@@ -1,0 +1,12 @@
+<form autocomplete="off">
+  <input type="text" placeholder="Username" [(ngModel)]="user.userId" name="username" required /><br /><br />
+  <input type="password" placeholder="Password" [(ngModel)]="user.password" name="password" required /><br /><br />
+  <select  placeholder="UserType" [(ngModel)]="user.userType"  name="usertype">
+    <option value="" disabled selected hidden>User Type</option>
+    <option value="student">Student</option>
+    <option value="faculty">Faculty</option>
+  </select>
+  
+  <input type="button" class="btn btn-info " value="Submit" (click)="onSubmit()" />
+
+</form>

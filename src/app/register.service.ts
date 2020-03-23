@@ -14,7 +14,7 @@ export class RegisterService {
   registerSvcUrl: string;
 
   constructor(private http: HttpClient) {
-    this.registerSvcUrl = "http://localhost:8000/userregistration";
+    this.registerSvcUrl = "http://localhost:8000/register";
    }
   httpOptions = {
     headers: new HttpHeaders({
