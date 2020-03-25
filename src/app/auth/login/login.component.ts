@@ -36,7 +36,12 @@ export class LoginComponent {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate(['/User']);
+                  console.log(data);
+                  if(data.userType=='Student')
+                     this.router.navigate(['/User']);
+                  else
+                    this.router.navigate(['/Admin']);
+
                 },
                 error => {
                   this.error = error

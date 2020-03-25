@@ -15,9 +15,9 @@ export class RegisterComponent  {
   user: userRegistration;
   loading = false;
   submitted = false;
-  @Input() userid: string;
+  @Input() userId: string;
   @Input() password: string;
-  @Input() usertype: string;
+  @Input() userType: string;
   error: string;
 
   constructor( private router: Router,private registerSvc: RegisterService) {
@@ -49,8 +49,13 @@ onSubmit() {
         .subscribe(
             data => {
                 //this.alertService.success('Registration successful', true);
-                this.router.navigate(['/user']);
+               // this.router.navigate(['/user']);
                 alert("registration success");
+                console.log(data);
+              if(data["userType"]=="Student")
+                this.router.navigate(['/User']);
+              else
+               this.router.navigate(['/Admin']);
             //    this.router.navigate(['/user']);
              
             },
