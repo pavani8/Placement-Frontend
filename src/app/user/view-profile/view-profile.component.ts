@@ -10,7 +10,7 @@ import { Student } from '../.././models/student';
 export class ViewProfileComponent implements OnInit {
 currentUser: string;
 error: string;
-student: Student=new Student("","","",0,"",new Date(),"","","",0,0,0,0,0);
+student: Student=new Student("","","",0,"",new Date(),"","","","",0,0,0,0,"","");
 
   constructor(private studSvc: StudentService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -19,12 +19,12 @@ student: Student=new Student("","","",0,"",new Date(),"","","",0,0,0,0,0);
 
   ngOnInit() {
     console.log("hello");
-   /* this.studSvc.getStudentById(this.currentUser).
+    this.studSvc.getStudentById(this.currentUser).
     subscribe((data: Student) => {
       this.student = data;
       console.log(data);
       console.log(this.student);
       this.error = "";
-      }, error => this.error = error);*/
+      }, error => this.error = error);
   } 
 }

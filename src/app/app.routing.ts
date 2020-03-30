@@ -6,6 +6,8 @@ import { AdminComponent } from './admin/admin/admin.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { CompanyComponent } from './company/company.component';
 import { HomeComponent } from './home/home.component';
+import { ViewProfileComponent } from './user/view-profile/view-profile.component';
+import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
 
 export const AppRoutes: Routes = [
      { path: '',    component: HomeComponent },
@@ -13,8 +15,10 @@ export const AppRoutes: Routes = [
      { path: 'User', component: UserComponent },
      { path: 'Login', component: LoginComponent },
      { path: 'Admin', component: AdminComponent},
-     {path: 'Company', component: CompanyComponent},
-     {path: 'Home', component: HomeComponent}
+     { path: 'Company', component: CompanyComponent},
+     {  path: 'Home', component: HomeComponent},
+     { path:  'ViewProfile', component: ViewProfileComponent},
+     { path: 'EditProfile', component: EditProfileComponent}
    ];
 
 export const ROUTING: ModuleWithProviders =RouterModule.forRoot(AppRoutes);

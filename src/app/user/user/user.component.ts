@@ -19,10 +19,11 @@ studName: string;
 
   ngOnInit() {
     console.log("hi");
-    this.studSvc.getStudentById(this.currentUser).subscribe((data: Student) =>{
+    console.log(this.currentUser);
+    /*this.studSvc.getStudentById(this.currentUser).subscribe((data: Student) =>{
       this.student = data;
       this.studName = this.student.studentName;
-    },error=> this.error=error);
+    },error=> this.error=error);*/
     }
 
 }

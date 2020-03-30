@@ -8,14 +8,17 @@ export class Student{
     studentDept: string;
     studentTempAddress: string;
     studentPermanentAddress: string;
-    studentBatch: number;
+    studentBatch: string;
     studentSSCMarks: number;
     studentInterMarks: number;
     studentDiplomaMarks: number;
     studentBTechMarks: number;
+    studentResume: string;
+    studentPhoto: string;
 
     constructor(studId: string,studName: string,studEmail: string,studContact: number,studGender: string,studDob: Date,studDept: string,
-        studTempAddress: string, studPermAddress: string, studBatch: number, studSSCMarks: number, studInterMarks: number, studDiplomaMarks: number, studBTechMarks: number){
+        studTempAddress: string, studPermAddress: string, studBatch: string, studSSCMarks: number, studInterMarks: number, studDiplomaMarks: number,
+        studBTechMarks: number, studResume: string, studPhoto: string){
         this.studentId = studId;
         this.studentName = studName;
         this.studentEmail = studEmail;
@@ -30,6 +33,8 @@ export class Student{
         this.studentInterMarks = studInterMarks;
         this.studentDiplomaMarks = studDiplomaMarks;
         this.studentBTechMarks = studBTechMarks;
+        this.studentResume = studResume;
+        this.studentPhoto = studPhoto;
     }
 
 }

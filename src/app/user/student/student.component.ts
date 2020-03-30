@@ -18,7 +18,7 @@ export class StudentComponent implements OnInit {
 
   constructor(private studentSvc: StudentService, private deptSvc: DepartmentService) {
     this.students = [];
-    this.student = new Student("","","",0,"",new Date(),"","","",0,0,0,0,0);
+    this.student = new Student("","","",0,"",new Date(),"","","","",0,0,0,0,"","");
     this.depts = [];
     this.dept = new Department("");
    }

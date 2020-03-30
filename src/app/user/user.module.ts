@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserRoutingModule } from './user-routing.module';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserComponent } from './user/user.component';
@@ -9,10 +9,13 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { StudentComponent } from './student/student.component';
 import { StudentloginComponent } from './studentlogin/studentlogin.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [UserDashboardComponent, UserComponent, EditProfileComponent, ViewProfileComponent, StudentComponent, StudentloginComponent]
 })
